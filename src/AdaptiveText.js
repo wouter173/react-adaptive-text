@@ -5,15 +5,15 @@ import React, {
 } from 'react';
 
 const AdaptiveText = ({
-  color = 'inherit',
-  containerWidth = '100%',
-  fontFamily = 'inherit',
+  color,
+  fontFamily,
   fontSizeMax,
   fontSizeMin,
-  fontStyle = 'inherit',
-  fontWeight = 'inherit',
+  fontStyle,
+  fontWeight,
   text,
-  textDecoration = 'inherit',
+  textDecoration,
+  width = '100%',
 }) => {
   const wrapperEl = useRef();
   const textEl = useRef();
@@ -24,20 +24,27 @@ const AdaptiveText = ({
   });
 
   const wrapperStyle = {
-    color: color,
     display: 'block',
-    fontFamily: fontFamily,
-    fontStyle: fontStyle,
-    fontWeight: fontWeight,
     textAlign: 'center',
-    textDecoration: textDecoration,
-    width: containerWidth,
+  };
+  
+  const addStyle = (styleProp, propName) => {
+    if (styleProp && typeof styleProp !== 'undefined') {
+      wrapperStyle[propName] = styleProp;
+    }
   };
 
+  addStyle(color, 'color');
+  addStyle(fontFamily, 'fontFamily');
+  addStyle(fontStyle, 'fontStyle');
+  addStyle(fontWeight, 'fontWeight');
+  addStyle(textDecoration, 'textDecoration');
+  addStyle(width, 'width');
+  
   useEffect(() => setTextStyle({
       fontSize: getFontSize(fontSizeMax, fontSizeMin),
     }),
-    [containerWidth, fontSizeMax, fontSizeMin, text],
+    [fontSizeMax, fontSizeMin, text, width],
   );
 
   const getFontSize = (fontSizeMax, fontSizeMin) => {
@@ -45,7 +52,7 @@ const AdaptiveText = ({
     const textWidth = textEl.current.offsetWidth;
     const fontSizeRefPx = window.getComputedStyle(textEl.current).getPropertyValue('font-size');
     const fontSizeRef = parseFloat(fontSizeRefPx);
-    const fontSize = Math.floor(fontSizeRef * wrapperWidth) / Math.ceil(textWidth);
+    const fontSize = Math.floor(Math.floor(fontSizeRef) * Math.floor(wrapperWidth)) / Math.ceil(textWidth);
     if (fontSize > fontSizeMax) {
       return fontSizeMax;
     }

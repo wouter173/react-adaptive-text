@@ -4,6 +4,7 @@
   "private": false,
   "scripts": {
     "start": "npx babel src/AdaptiveText.js -w -o dist/AdaptiveText.js -s",
+    "build": "npx babel src/AdaptiveText.js -o dist/AdaptiveText.js",
     "publish": "npm publish —-access=public"
   },
   "babel": {
