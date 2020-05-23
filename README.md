@@ -40,8 +40,8 @@ function BasicExample = () => {
 |-|:-:|:-:|-|
 |color|CSS property||Overrides `color` inheritance|
 |fontFamily|CSS property||Overrides `font-family` inheritance|
-|fontSizeMax|ineger||Maximum font size|
-|fontSizeMin|integer||Minimum font size|
+|fontSizeMax|integer||Maximum font size (in pixels)|
+|fontSizeMin|integer||Minimum font size (in pixels)|
 |fontStyle|CSS property||Overrides `font-style` inheritance|
 |fontWeight|CSS property||Overrides `font-weight` inheritance|
 |text|String|*|Text to display|
