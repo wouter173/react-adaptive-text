@@ -3,7 +3,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { useResize } from './useResize';
+import { useResize } from './useResize.js';
 
 const AdaptiveText = ({
   color,
