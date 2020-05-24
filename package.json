@@ -1,12 +1,10 @@
 {
   "name": "react-adaptive-text",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "scripts": {
     "start": "npx babel src/AdaptiveText.js -w -o dist/AdaptiveText.js -s",
-    "build": "npx babel src/AdaptiveText.js -o dist/AdaptiveText.js --minify --presets @babel/preset-react",
-    "rollup": "./node_modules/.bin/rollup -c",
-    "rollup:test": "rollup src/AdaptiveText.js --file dist/AdaptiveText.js --format iife",
+    "build": "./node_modules/.bin/rollup -c",
     "publish": "npm publish --access public"
   },
   "babel": {
