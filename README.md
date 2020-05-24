@@ -26,8 +26,8 @@ function BasicExample = () => {
   return (
     <div style={wrapperStyle}>
       <AdaptiveText
-        text="This text fills 80% width of its container!"
         width="80%"
+        text="This text fills 80% width of its container!"
       />
     </div>
   );
@@ -36,15 +36,15 @@ function BasicExample = () => {
 
 ## Options
 
-|Name|Type|Required|Description|
-|-|:-:|:-:|-|
-|color|CSS property||Overrides `color` inheritance|
-|fontFamily|CSS property||Overrides `font-family` inheritance|
-|fontSizeMax|integer||Maximum font size (in pixels)|
-|fontSizeMin|integer||Minimum font size (in pixels)|
-|fontStyle|CSS property||Overrides `font-style` inheritance|
-|fontWeight|CSS property||Overrides `font-weight` inheritance|
-|text|String|*|Text to display|
-|textDecoration|CSS property||Overrides `text-decoration` inheritance|
-|width|CSS property||Overrides `width` inheritance *(default: `100%`)*|
+||||
+|-|:-:|-|
+|**color** *(Optional)*|CSS property|Overrides `color` inheritance|
+|**fontFamily** *(Optional)*|CSS property|Overrides `font-family` inheritance|
+|**fontSizeMax** *(Optional)*|integer|Maximum font size (in pixels)|
+|**fontSizeMin** *(Optional)*|integer|Minimum font size (in pixels)|
+|**fontStyle** *(Optional)*|CSS property|Overrides `font-style` inheritance|
+|**fontWeight** *(Optional)*|CSS property|Overrides `font-weight` inheritance|
+|**text**|string|Text to display|
+|**textDecoration** *(Optional)*|CSS property|Overrides `text-decoration` inheritance|
+|**width** *(Optional)*|CSS property|Overrides `width` inheritance *(default: `100%`)*|
 

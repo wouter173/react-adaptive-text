@@ -3,6 +3,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { useResize } from './useResize';
 
 const AdaptiveText = ({
   color,
@@ -22,7 +23,9 @@ const AdaptiveText = ({
     opacity: 0,
     whiteSpace: 'nowrap',
   });
-
+  const [fontSizeRef, setFontSizeRef] = useState(0);
+  const [textWidthRef, setTextWidthRef] = useState(0);
+  
   const wrapperStyle = {
     display: 'block',
     textAlign: 'center',
@@ -41,18 +44,25 @@ const AdaptiveText = ({
   addStyle(textDecoration, 'textDecoration');
   addStyle(width, 'width');
   
-  useEffect(() => setTextStyle({
-      fontSize: getFontSize(fontSizeMax, fontSizeMin),
-    }),
-    [fontSizeMax, fontSizeMin, text, width],
-  );
-
-  const getFontSize = (fontSizeMax, fontSizeMin) => {
-    const wrapperWidth = wrapperEl.current.offsetWidth;
-    const textWidth = textEl.current.offsetWidth;
+  useEffect(() => {
     const fontSizeRefPx = window.getComputedStyle(textEl.current).getPropertyValue('font-size');
     const fontSizeRef = parseFloat(fontSizeRefPx);
-    const fontSize = Math.floor(Math.floor(fontSizeRef) * Math.floor(wrapperWidth)) / Math.ceil(textWidth);
+    const textWidthRef = textEl.current.offsetWidth;
+    setFontSizeRef(fontSizeRef);
+    setTextWidthRef(textWidthRef);
+    setTextStyle({
+      fontSize: getFontSize(fontSizeRef, textWidthRef, fontSizeMax, fontSizeMin),
+    });
+  },
+  [fontSizeMax, fontSizeMin, text, width]);
+
+  useResize(() => setTextStyle({
+    fontSize: getFontSize(fontSizeRef, textWidthRef, fontSizeMax, fontSizeMin),
+  }));
+
+  const getFontSize = (fontSizeRef, textWidthRef, fontSizeMax, fontSizeMin) => {
+    const wrapperWidth = wrapperEl.current.offsetWidth;
+    const fontSize = Math.floor(Math.floor(fontSizeRef) * Math.floor(wrapperWidth)) / Math.ceil(textWidthRef);
     if (fontSize > fontSizeMax) {
       return fontSizeMax;
     }
