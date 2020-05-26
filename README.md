@@ -1,6 +1,9 @@
-# Adaptive text React component
+# AdaptiveText React component
 
-Simple UI component that allows the font size of a text to adapt automatically to fill the width of an element.
+Simple UI component that allows the font size of a text to adapt automatically to fill the width of an element in one line.
+
+![AdaptiveText render example](./img1.jpg)
+
 
 ## Prerequisites
 
@@ -31,20 +34,19 @@ function BasicExample = () => {
       />
     </div>
   );
-}
+};
 ```
 
 ## Options
 
-||||
+|Property|Type|Description|
 |-|:-:|-|
-|**color** *(Optional)*|CSS property|Overrides `color` inheritance|
-|**fontFamily** *(Optional)*|CSS property|Overrides `font-family` inheritance|
+|**color** *(Optional)*|CSS value|Overrides `color` inheritance|
+|**fontFamily** *(Optional)*|CSS value|Overrides `font-family` inheritance|
 |**fontSizeMax** *(Optional)*|integer|Maximum font size (in pixels)|
 |**fontSizeMin** *(Optional)*|integer|Minimum font size (in pixels)|
-|**fontStyle** *(Optional)*|CSS property|Overrides `font-style` inheritance|
-|**fontWeight** *(Optional)*|CSS property|Overrides `font-weight` inheritance|
+|**fontStyle** *(Optional)*|CSS value|Overrides `font-style` inheritance|
+|**fontWeight** *(Optional)*|CSS value|Overrides `font-weight` inheritance|
 |**text**|string|Text to display|
-|**textDecoration** *(Optional)*|CSS property|Overrides `text-decoration` inheritance|
-|**width** *(Optional)*|CSS property|Overrides `width` inheritance *(default: `100%`)*|
-
+|**textDecoration** *(Optional)*|CSS value|Overrides `text-decoration` inheritance|
+|**width** *(Optional)*|CSS value|Overrides `width` inheritance *(default: `100%`)*|
