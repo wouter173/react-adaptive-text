@@ -3,6 +3,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import PropTypes from 'prop-types';
 import { useResize } from './useResize.js';
 
 const AdaptiveText = ({
@@ -18,7 +19,7 @@ const AdaptiveText = ({
 }) => {
   const wrapperEl = useRef();
   const textEl = useRef();
-
+  
   const [textStyle, setTextStyle] = useState({
     opacity: 0,
     whiteSpace: 'nowrap',
@@ -47,7 +48,7 @@ const AdaptiveText = ({
   useEffect(() => {
     const fontSizeRefPx = window.getComputedStyle(textEl.current).getPropertyValue('font-size');
     const fontSizeRef = parseFloat(fontSizeRefPx);
-    const textWidthRef = textEl.current.offsetWidth;
+    const textWidthRef = textEl.current.offsetWidth === 0 ? 1 : textEl.current.offsetWidth;
     setFontSizeRef(fontSizeRef);
     setTextWidthRef(textWidthRef);
     setTextStyle({
@@ -77,6 +78,25 @@ const AdaptiveText = ({
       <span ref={textEl} style={textStyle}>{text}</span>
     </span>
   );
+};
+
+AdaptiveText.propTypes = {
+  color: PropTypes.string,
+  fontFamily: PropTypes.string,
+  fontSizeMax: PropTypes.number,
+  fontSizeMin: PropTypes.number,
+  fontStyle: PropTypes.string,
+  fontWeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  text: (props, propName, componentName) => {
+    if (typeof props[propName] !== 'string') {
+      return new Error(`Property '${propName}' supplied to ${componentName} is required and must be type of 'string'.`);
+    }
+    if (props[propName].length <= 0) {
+      return new Error(`Property '${propName}' supplied to ${componentName} cannot be empty.`);
+    }
+  },
+  textDecoration: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default AdaptiveText;

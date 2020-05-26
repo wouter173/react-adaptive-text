@@ -12,7 +12,7 @@ Simple UI component that allows the font size of a text to adapt automatically t
 
 ## Usage example
 
-```
+```js
 import React from 'react';
 import AdaptiveText from 'react-adaptive-text';
 
