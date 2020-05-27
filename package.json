@@ -1,6 +1,6 @@
 {
   "name": "react-adaptive-text",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "private": false,
   "scripts": {
     "start": "npx babel src/AdaptiveText.js -w -o dist/AdaptiveText.js -s",

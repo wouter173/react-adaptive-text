@@ -2,8 +2,7 @@
 
 Simple UI component that allows the font size of a text to adapt automatically to fill the width of an element in one line.
 
-![AdaptiveText render example](./img1.jpg)
-
+![AdaptiveText render example](https://github.com/maxduyck/react-adaptive-text/raw/master/img1.jpg)
 
 ## Prerequisites
 
