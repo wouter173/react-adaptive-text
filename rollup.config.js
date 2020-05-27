@@ -6,7 +6,7 @@ export default {
     file: 'dist/AdaptiveText.js',
     format: 'cjs',
   },
-  external: ['react'],
+  external: ['react', 'prop-types'],
   plugins: [
     getBabelOutputPlugin({
       presets: ['@babel/preset-env', '@babel/preset-react', 'minify']
