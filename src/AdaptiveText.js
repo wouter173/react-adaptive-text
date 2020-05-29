@@ -52,18 +52,22 @@ const AdaptiveText = ({
     setFontSizeRef(fontSizeRef);
     setTextWidthRef(textWidthRef);
     setTextStyle({
-      fontSize: getFontSize(fontSizeRef, textWidthRef, fontSizeMax, fontSizeMin),
+      fontSize: getFontSize(text, fontSizeRef, textWidthRef, fontSizeMax, fontSizeMin),
     });
-  },
-  [fontSizeMax, fontSizeMin, text, width]);
+  }, [fontSizeMax, fontSizeMin, text, width]);
 
   useResize(() => setTextStyle({
-    fontSize: getFontSize(fontSizeRef, textWidthRef, fontSizeMax, fontSizeMin),
+    fontSize: getFontSize(text, fontSizeRef, textWidthRef, fontSizeMax, fontSizeMin),
   }));
 
-  const getFontSize = (fontSizeRef, textWidthRef, fontSizeMax, fontSizeMin) => {
+  const getFontSize = (text, fontSizeRef, textWidthRef, fontSizeMax, fontSizeMin) => {
+    textEl.current.style.display = 'none';
     const wrapperWidth = wrapperEl.current.offsetWidth;
-    const fontSize = Math.floor(Math.floor(fontSizeRef) * Math.floor(wrapperWidth)) / Math.ceil(textWidthRef);
+    if (text.length <= 0) {
+      return 0;
+    }
+    const fontSize = fontSizeRef * wrapperWidth / textWidthRef - 1;
+    textEl.current.style.display = null;
     if (fontSize > fontSizeMax) {
       return fontSizeMax;
     }
@@ -72,7 +76,7 @@ const AdaptiveText = ({
     }
     return fontSize;
   };
-
+  
   return (
     <span ref={wrapperEl} style={wrapperStyle}>
       <span ref={textEl} style={textStyle}>{text}</span>
@@ -87,14 +91,7 @@ AdaptiveText.propTypes = {
   fontSizeMin: PropTypes.number,
   fontStyle: PropTypes.string,
   fontWeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  text: (props, propName, componentName) => {
-    if (typeof props[propName] !== 'string') {
-      return new Error(`Property '${propName}' supplied to ${componentName} is required and must be type of 'string'.`);
-    }
-    if (props[propName].length <= 0) {
-      return new Error(`Property '${propName}' supplied to ${componentName} cannot be empty.`);
-    }
-  },
+  text: PropTypes.string.isRequired,
   textDecoration: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
