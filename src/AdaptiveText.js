@@ -51,6 +51,7 @@ const AdaptiveText = ({
     const textWidthRef = textEl.current.offsetWidth === 0 ? 1 : textEl.current.offsetWidth;
     setFontSizeRef(fontSizeRef);
     setTextWidthRef(textWidthRef);
+    textEl.current.style.whiteSpace = null;
     setTextStyle({
       fontSize: getFontSize(text, fontSizeRef, textWidthRef, fontSizeMax, fontSizeMin),
     });
@@ -62,11 +63,11 @@ const AdaptiveText = ({
 
   const getFontSize = (text, fontSizeRef, textWidthRef, fontSizeMax, fontSizeMin) => {
     textEl.current.style.display = 'none';
-    const wrapperWidth = wrapperEl.current.offsetWidth;
+    const wrapperWidth = wrapperEl.current.clientWidth;
     if (text.length <= 0) {
       return 0;
     }
-    const fontSize = fontSizeRef * wrapperWidth / textWidthRef - 1;
+    const fontSize = (fontSizeRef * wrapperWidth / textWidthRef) - 1;
     textEl.current.style.display = null;
     if (fontSize > fontSizeMax) {
       return fontSizeMax;
