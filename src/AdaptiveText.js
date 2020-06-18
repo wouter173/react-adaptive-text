@@ -27,22 +27,15 @@ const AdaptiveText = ({
   const [textWidthRef, setTextWidthRef] = useState(0);
   
   const wrapperStyle = {
+    color: color,
     display: 'block',
+    fontFamily: fontFamily,
+    fontStyle: fontStyle,
+    fontWeight: fontWeight,
     textAlign: 'center',
+    textDecoration: textDecoration,
+    width: width,
   };
-  
-  const addStyle = (styleProp, propName) => {
-    if (styleProp && typeof styleProp !== 'undefined') {
-      wrapperStyle[propName] = styleProp;
-    }
-  };
-  
-  addStyle(color, 'color');
-  addStyle(fontFamily, 'fontFamily');
-  addStyle(fontStyle, 'fontStyle');
-  addStyle(fontWeight, 'fontWeight');
-  addStyle(textDecoration, 'textDecoration');
-  addStyle(width, 'width');
   
   useEffect(() => {
     if (!text) {
