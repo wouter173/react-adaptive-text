@@ -32,7 +32,7 @@ const AdaptiveText = ({
     fontFamily: fontFamily,
     fontStyle: fontStyle,
     fontWeight: fontWeight,
-    textAlign: 'center',
+    textAlign: 'left',
     textDecoration: textDecoration,
     width: width,
   };
