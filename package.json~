@@ -1,0 +1,42 @@
+{
+  "name": "react-adaptive-text",
+  "version": "1.0.12",
+  "private": false,
+  "scripts": {
+    "start": "npx babel src/AdaptiveText.js -w -o dist/AdaptiveText.js -s",
+    "build": "./node_modules/.bin/rollup -c",
+    "publish": "npm publish --access public"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "adaptive",
+    "font-size",
+    "text",
+    "width"
+  ],
+  "author": "Maxime Duyck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maxduyck/react-adaptive-text/issues"
+  },
+  "homepage": "https://github.com/maxduyck/react-adaptive-text#readme",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "main": "dist/AdaptiveText.js",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-external-helpers": "^7.8.3",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "@rollup/plugin-babel": "^5.0.2",
+    "@types/react": "^16.8.0",
+    "babel-preset-minify": "^0.5.1",
+    "rollup": "^2.10.9"
+  }
+}
